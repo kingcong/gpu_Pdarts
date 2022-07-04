@@ -63,8 +63,8 @@
 
 # 环境要求
 
-- 硬件（/GPU）
-    - 使用或GPU处理器来搭建硬件环境。
+- 硬件（GPU）
+    - 使用GPU处理器来搭建硬件环境。
 - 框架
     - [MindSpore](https://www.mindspore.cn/install)
 - 如需查看详情，请参见如下资源：
@@ -152,15 +152,9 @@
 
 ### 训练
 
-- 910处理器、GPU环境运行
+- GPU环境运行
 
-  ```bash
-  单卡910
-  bash ./scripts/run_standalone_train_ /data/cifar-10-binary ./output
-  8卡910
-  bash ./scripts/run_distribution_train_ ../rank_table.json /data/cifar-10-binary ../output
-  注：单卡910训练启动脚本一共有2个参数，8卡训练脚本有3个参数，分别为[rank_table配置文件(8卡训练脚本需要使用)] [cifar10数据集路径] [训练输出路径]
-
+ 
   单卡GPU
   bash ./scripts/run_standalone_train_gpu.sh ./cifar-10-binary/ ./output/
   8卡GPU
@@ -205,19 +199,7 @@
 
 ### 评估
 
-- 处理器环境
 
-  运行以下命令进行评估。
-
-  ```bash
-  bash ./scripts/run_standalone_eval_.sh /data/cifar-10-binary/val ./output/model_checkpoint.ckpt
-  注：评估脚本参数一共为两个，分别是[验证集路径] [ckpt文件路径]；
-      数据集格式与上面训练过程相同，并选择cifar-10-binary/val部分进行评估；
-  ```
-
-  单卡训练最终精度acc top1为97.1%，acc top5为99.93%
-
-  8卡训练最终精度acc top1为97.01%，acc top5为99.91%
 
 - GPU环境
 
@@ -259,31 +241,31 @@ bash ./scripts/run_infer_310.sh [MINDIR_PATH] [DATASET_PATH]
 
 ### 训练准确率结果
 
-| 模型 | PDarts | PDarts |
-| ------------------- | --------------------------- | --------------------------- |
-| 模型版本 | PDarts- | PDarts-GPU |
-| 资源 |  910 | V100 |
-| 上传日期 | 2021/6/9 | 2021/12/28 |
-| MindSpore版本 | 1.2.0  | 1.5.0 GPU |
-| 数据集 | cifar10 | cifar10 |
-| 轮次 | 600 | 600 |
-| 输出 | 概率 | 概率 |
-| 损失 | 0.1574 | 0.1241 |
-| 总时间 | 单卡：约15小时         8卡：约3.2小时 | 8卡：约7小时 |
-| 训练精度 | 单卡：Top1：97.1%； Top5：99.93%         8卡：Top1：97.01%； Top5：99.91% | 8卡：Top1：97.205%； Top5：99.939% |
+| 模型 |  PDarts |
+| ------------------- | --------------------------- |
+| 模型版本 | PDarts-GPU |
+| 资源 | V100 |
+| 上传日期 || 2021/12/28 |
+| MindSpore版本 | 1.5.0 GPU |
+| 数据集 | cifar10 |
+| 轮次 |  600 |
+| 输出 |  概率 |
+| 损失 | 0.1241 |
+| 总时间 | 8卡：约7小时 |
+| 训练精度 |  8卡：Top1：97.205%； Top5：99.939% |
 
 ### 训练性能结果
 
-| 模型 | PDarts | PDarts |
-| ------------------- | --------------------------- | --------------------------- |
-| 模型版本 | PDarts- | PDarts-GPU |
-| 资源 |  910 | V100 |
-| 上传日期 | 2021/6/9 | 2021/12/28 |
-| MindSpore版本 | 1.2.0  | 1.5.0 GPU |
-| 数据集 | cifar10 |cifar10|
-| batch_size | 单卡：128    8卡：32 | 8卡：32 |
-| 输出 | 概率 |概率|
-| 速度 | 单卡：189.4ms/step        8卡：65.5ms/step | 8卡：约180ms/step |
+| 模型 |  PDarts |
+| ------------------- | --------------------------- |
+| 模型版本 | PDarts-GPU |
+| 资源 |  V100 |
+| 上传日期 | 2021/12/28 |
+| MindSpore版本 | 1.5.0 GPU |
+| 数据集 |cifar10|
+| batch_size |  8卡：32 |
+| 输出 | 概率|
+| 速度 |  8卡：约180ms/step |
 
 # 随机情况说明
 
